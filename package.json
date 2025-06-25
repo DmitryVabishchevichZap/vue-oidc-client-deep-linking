@@ -1,11 +1,15 @@
 {
-  "name": "vue-oidc-client",
-  "version": "1.0.0-alpha.5",
-  "description": "Wrapper around oidc-client-js to to better work in a Vue application with Vue Router integration.",
+  "name": "vue-oidc-client-deep-linking",
+  "version": "0.1.0",
+  "description": "Wrapper around oidc-client-js to better work in a Vue application with Vue Router integration.",
   "author": "Eugene Wang",
   "license": "MIT",
   "scripts": {
-    "build": "cd vue2 && npm install --quiet && npm run build && cd ../vue3 && npm install --quiet && npm run build"
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run build:all",
+    "build:all": "npm run build:vue2 && npm run build:vue3",
+    "build:vue2": "cd vue2 && npm ci --quiet && npm run build",
+    "build:vue3": "cd vue3 && npm ci --quiet && npm run build",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "oidc-client": "^1.11.5"
@@ -28,10 +32,14 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/soukoku/vue-oidc-client.git"
+    "url": "git+https://github.com/soukoku/vue-oidc-client.git"
   },
   "bugs": {
     "url": "https://github.com/soukoku/vue-oidc-client/issues"
   },
-  "homepage": "https://github.com/soukoku/vue-oidc-client"
+  "homepage": "https://github.com/soukoku/vue-oidc-client",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "main": "polyfill.js"
 }
