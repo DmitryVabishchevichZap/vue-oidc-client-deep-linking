@@ -4304,7 +4304,7 @@ function createOidcAuth(authName, defaultSignInType, appUrl, oidcConfig, logger,
         external_oidc_client_["Log"].debug("".concat(authName, " auth page re-signin with ").concat(defaultSignInType));
         signInReal(defaultSignInType, {
           state: {
-            current: current
+            to: current
           }
         }).then(function () {// auth.myRouter()
         }).catch(function () {

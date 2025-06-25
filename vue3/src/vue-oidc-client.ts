@@ -336,7 +336,7 @@ export function createOidcAuth(
       if (current && current.meta.authName === authName) {
         Log.debug(`${authName} auth page re-signin with ${defaultSignInType}`)
 
-        signInReal(defaultSignInType, { state: { current } })
+        signInReal(defaultSignInType, { state: { to: current } })
           .then(() => {
             // auth.myRouter()
           })
